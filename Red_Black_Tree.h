@@ -135,8 +135,16 @@ public:
             }
             else
             {
-                curr->name = name;
-                curr->stock = stock;
+                if (curr->name == name)
+                {
+                    curr->stock += stock;
+                }
+                else
+                {
+                    curr->name = name;
+                    curr->stock = stock;
+                }
+
                 delete newNode;
                 return;
             }
@@ -147,7 +155,7 @@ public:
         nodeCount++;
     }
 
-    void insertFix(Node *&node) // only star??
+    void insertFix(Node *&node)
     {
         if (node == root)
         {
@@ -373,9 +381,10 @@ public:
         deleteNode(node);
         nodeCount--;
     }
-    void clearTree(){
+    void clearTree()
+    {
         deleteAll(root);
-        root=T_NIL;
+        root = T_NIL;
         nodeCount = 0;
     }
 
