@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include<vector>
+#include <vector>
 #include "inventory_system.h"
 using namespace std;
 
@@ -94,11 +94,13 @@ int main()
         {
             vector<string> treeStr;
             IS.listInventory(treeStr);
-            for (const auto &it : treeStr) {
+            for (const auto &it : treeStr)
+            {
                 outputFile << it << endl;
             }
         }
-        else{
+        else
+        {
             outputFile << "Invalid command: " + func;
         }
     }

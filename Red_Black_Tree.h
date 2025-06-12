@@ -240,7 +240,7 @@ public:
     }
 
     // find the minimum of a subtree
-    Node *MinimumTreeNode(Node *n)
+    Node *MaximumTreeNode(Node *n)
     {
         while (n->right != T_NIL)
         {
@@ -267,22 +267,24 @@ public:
         }
         else
         {
-            newNode = MinimumTreeNode(target->left);
+            newNode = MaximumTreeNode(target->left);
             clr = newNode->color;
-            x = newNode->right;
-            if (newNode != target->right)
+            x = newNode->left;
+
+            if (newNode != target->left)
             {
-                transplant(newNode, newNode->right);
-                newNode->right = target->right;
-                newNode->right->par = newNode;
+                transplant(newNode, newNode->left);
+                newNode->left = target->left;
+                newNode->left->par = newNode;
             }
             else
             {
                 x->par = newNode;
             }
+
             transplant(target, newNode);
-            newNode->left = target->left;
-            newNode->left->par = newNode;
+            newNode->right = target->right;
+            newNode->right->par = newNode;
             newNode->color = target->color;
         }
         if (clr == true)
