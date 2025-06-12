@@ -466,7 +466,15 @@ public:
         ostringstream oss;
         oss << node->id << " => " << node->name << " (" << node->stock << ")";
         res.push_back(oss.str());
-        cout << node->id << " => " << node->name << " (" << node->stock << ")" << endl;
+        if (node->color == true)
+        {
+            cout << dye::black(node->id) << " => " << dye::black(node->name) << dye::black(" (") << dye::black(node->stock) << dye::black(")") << endl;
+        }
+        else
+        {
+            cout << dye::red(node->id) << " => " << dye::red(node->name) << dye::red(" (") << dye::red(node->stock) << dye::red(")") << endl;
+        }
+
         inOrder(node->right, res);
     }
 };
